@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap w/ Vite</title>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/upload.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form id="formUpload">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Cover</label>
+          <input class="form-control" type="file" id="inputFile" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+
+    <div id="images"></div>
+  </body>
+</html>

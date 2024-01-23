@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap w/ Vite</title>
+  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/manager.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form id="formManager">
+      <div class="mb-3">
+        <label for="inputFile" class="form-label">Cover</label>
+        <input class="form-control" type="file" id="inputFile" accept="image/*" required />
+      </div>
+      <div class="mb-3">
+        <label for="inputTitle" class="form-label">Titulo</label>
+        <input type="text" class="form-control" id="inputTitle" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputYear" class="form-label">Ano</label>
+        <select class="form-select" aria-label="Selecione" id="inputYear" required>
+          <option value="2024" selected>2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <div class="mb-2">
+          <label lass="form-label">Gêneros</label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ação" id="actionCheckbox">
+          <label class="form-check-label" for="actionCheckbox">
+            Ação
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Comédia" id="comedyCheckbox">
+          <label class="form-check-label" for="comedyCheckbox">
+            Comédia
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Drama" id="dramaCheckbox">
+          <label class="form-check-label" for="dramaCheckbox">
+            Drama
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Suspense" id="thrillerCheckbox">
+          <label class="form-check-label" for="thrillerCheckbox">
+            Suspense
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Romance" id="romanceCheckbox">
+          <label class="form-check-label" for="romanceCheckbox">
+            Romance
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Terror" id="horrorCheckbox">
+          <label class="form-check-label" for="horrorCheckbox">
+            Terror
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="inputDescription" class="form-label">Descrição</label>
+        <textarea class="form-control" id="inputDescription" rows="3" required></textarea>
+      </div>
+
+      <button id="buttonSubmit" type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+  </div>
+</body>
+
+</html>

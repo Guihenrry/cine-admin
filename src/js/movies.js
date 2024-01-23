@@ -8,7 +8,34 @@ const supabase = createClient(
 async function getMovies() {
   const { data: movies, error } = await supabase.from('movies').select('*')
 
-  console.log(movies)
-}
+  if (error) {
+    console.error('Erro ao obter os filmes:', error.message);
+    return;
+  }
 
-getMovies()
+  const tableBody = document.querySelector('.table tbody');
+
+  tableBody.innerHTML = '';
+
+  movies.forEach(movie => {
+    const newRow = document.createElement('tr');
+
+    newRow.innerHTML = `
+      <td>
+        <img src="${movie.cover}" class="img-2" />
+      </td>
+      <td>${movie.title}</td>
+      <td>${movie.description}</td>
+      <td>${movie.gender}</td>
+      <td>${movie.year}</td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Editar </button></td>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"> Delete </button></td>
+      </td>
+      
+    `;
+
+    tableBody.appendChild(newRow);
+  });
+}
+getMovies();

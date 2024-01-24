@@ -32,7 +32,7 @@ async function getMovies() {
       <td>${movie.gender}</td>
       <td>${movie.year}</td>
       <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar</button>
+        <a href="./manager.html?id=${movie.id}" class="btn btn-primary">Editar</a>
         <button type="button" class="btn btn-danger button-delete" data-id="${movie.id}">Delete</button>
       </td>
     `;

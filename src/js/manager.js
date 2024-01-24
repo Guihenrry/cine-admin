@@ -8,9 +8,36 @@ const supabase = createClient(
 const formManager = document.getElementById('formManager')
 const inputFile = document.getElementById('inputFile')
 const inputTitle = document.getElementById('inputTitle')
+const inputYear = document.getElementById('inputYear')
 const genresCheckbox = document.querySelectorAll('.form-check-input')
 const inputDescription = document.getElementById('inputDescription')
 const buttonSubmit = document.getElementById('buttonSubmit')
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+
+async function loadMovieFromSupabase(id) {
+  const { data, error } = await supabase.from('movies').select('*').eq('id', id)
+
+  if (error) {
+    console.error(error)
+  } else {
+    const movie = data[0]
+    inputTitle.value = movie.title
+    inputYear.value = movie.year
+    inputDescription.value = movie.description
+
+    const genderArray = movie.gender.split(', ')
+    genderArray.forEach(gender => {
+      const checkbox = document.querySelector(`input[value="${gender}"]`)
+      checkbox.checked = true
+    })
+  }
+}
+
+if (id) {
+  loadMovieFromSupabase(id)
+}
 
 formManager.addEventListener('submit', async (event) => {
   event.preventDefault()
@@ -33,6 +60,7 @@ formManager.addEventListener('submit', async (event) => {
     .join(', ')
 
   const movie = {
+    id: id ? Number(id) : undefined,
     title: inputTitle.value,
     year: inputYear.value,
     cover: cover,
@@ -40,7 +68,7 @@ formManager.addEventListener('submit', async (event) => {
     description: inputDescription.value,
   }
 
-  await supabase.from('movies').insert([movie]).select()
+  await supabase.from('movies').upsert(movie).select()
 
   window.location.href = 'movies.html'
 })

@@ -15,11 +15,13 @@ async function getMovies() {
 
   const tableBody = document.querySelector('.table tbody');
   const searchInput = document.getElementById('searchInput');
+  searchInput.removeEventListener('input', filterMovies);
 
   tableBody.innerHTML = '';
 
   movies.forEach(movie => {
     const newRow = document.createElement('tr');
+    newRow.setAttribute('data-id', movie.id)
 
     newRow.innerHTML = `
       <td>
@@ -31,14 +33,47 @@ async function getMovies() {
       <td>${movie.year}</td>
       <td>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar</button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+        <button type="button" class="btn btn-danger button-delete" data-id="${movie.id}">Delete</button>
       </td>
     `;
 
     tableBody.appendChild(newRow);
   });
+  
+  const buttonsDelete = document.querySelectorAll('.button-delete');
+
+  buttonsDelete.forEach((button) => {
+    button.addEventListener('click', handleDelete)
+  })
 
   searchInput.addEventListener('input', filterMovies);
+}
+
+async function handleDelete(event) {
+  const id = event.target.dataset.id
+
+  const confirmDelete = confirm("Você realmente deseja deletar o filme?");
+
+  if (confirmDelete) {
+    try {
+      const { error } = await supabase
+        .from('movies')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        console.error("Erro ao deletar o filme:", error.message);
+      } else {
+        console.log("Filme deletado com sucesso!");
+        const trToDelete = document.querySelector(`tr[data-id="${id}"]`)
+        trToDelete.remove()
+      }
+    } catch (error) {
+      console.error("Erro inesperado:", error.message);
+    }
+  } else {
+    console.log("Operação de exclusão cancelada pelo usuário.");
+  }
 }
 
 function filterMovies() {

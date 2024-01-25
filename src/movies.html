@@ -21,7 +21,7 @@
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class=" nav-btn pr-5 collapse navbar-collapse justify-content-end " id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Sair</a>
@@ -38,14 +38,21 @@
 
     <div class="frame">
       <div class="header-item">
-        <div class="search-container">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/c0e63708a7923b985a0a04d15af818219e806474951f33b8b90a4b78340dd9b3?apiKey=2606cc2ab679400b8a3c928386047b65&"
-            class="search-icon" alt="Search Icon">
-          <input class="form-control" type="text" id="searchInput" placeholder="Buscar por título">
-        </div>
+        <nav class="navbar navbar-light">
+          <form class="form-inline">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <img loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/c0e63708a7923b985a0a04d15af818219e806474951f33b8b90a4b78340dd9b3?apiKey=2606cc2ab679400b8a3c928386047b65&"
+                class="input-group-text" alt="Search Icon" id="basic-addon1">
+              </div>
+              <input class="form-control" type="text" id="searchInput" placeholder="Buscar por título">
+            </div>
+          </form>
+        </nav>
         <a href="./manager.html" class="add-movie-link">Adicionar Filme</a>
-      </div>
+      </div> 
+    </div>
 
       <div class="container mt-4">
         <table class="table">

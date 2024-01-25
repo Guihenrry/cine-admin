@@ -9,6 +9,9 @@
   padding: 50px 80px;
 }
 
+.img-2{
+  height: 250px;
+}
 @media (max-width: 991px) {
   .login-container {
     padding: 0 20px;
@@ -157,4 +160,18 @@
 .container {
   border-radius: 6px;
   padding: 20px;
+}
+
+.nav-logout{
+  padding-right: 40px;
+}
+.navbar-brand{
+  padding-left: 40px;
+}
+.input-group-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-right: 20px;
 }

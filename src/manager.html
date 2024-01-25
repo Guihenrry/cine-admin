@@ -12,10 +12,13 @@
 <body>
   <div class="container">
     <form id="formManager">
-      <div class="mb-3">
-        <label for="inputFile" class="form-label">Cover</label>
-        <input class="form-control" type="file" id="inputFile" accept="image/*" required />
-      </div>
+      <label class="mb-3 d-block file-upload" for="inputFile">
+        <div class="form-label">Cover</div>
+        <input class="file-upload-input" type="file" id="inputFile" accept="image/*" required />
+        <div class="file-upload-box">
+          <img class="file-upload-img" src="" alt="">
+        </div>
+      </label>
       <div class="mb-3">
         <label for="inputTitle" class="form-label">Titulo</label>
         <input type="text" class="form-control" id="inputTitle" required>
@@ -39,6 +42,13 @@
           <input class="form-check-input" type="checkbox" value="Ação" id="actionCheckbox">
           <label class="form-check-label" for="actionCheckbox">
             Ação
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Animação" id="animationCheckbox">
+          <label class="form-check-label" for="animationCheckbox">
+            Animação
           </label>
         </div>
 

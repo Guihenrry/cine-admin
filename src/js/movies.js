@@ -5,6 +5,9 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 );
 
+const BASE_BUCKET_URL =
+  'https://kvhwrzkhtauuzeucwqtb.supabase.co/storage/v1/object/public/images/'
+
 async function getMovies() {
   const { data: movies, error } = await supabase.from('movies').select('*');
 
@@ -60,12 +63,15 @@ async function handleDelete(event) {
         .from('movies')
         .delete()
         .eq('id', id);
+      
+      const trToDelete = document.querySelector(`tr[data-id="${id}"]`)
+      const imgToDelete = trToDelete.querySelector('img').src.replace(BASE_BUCKET_URL, '')
+      await supabase.storage.from('images').remove([imgToDelete])
 
       if (error) {
         console.error("Erro ao deletar o filme:", error.message);
       } else {
         console.log("Filme deletado com sucesso!");
-        const trToDelete = document.querySelector(`tr[data-id="${id}"]`)
         trToDelete.remove()
       }
     } catch (error) {

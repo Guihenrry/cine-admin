@@ -9,7 +9,7 @@
   padding: 50px 80px;
 }
 
-.img-2{
+.img-2 {
   height: 250px;
 }
 @media (max-width: 991px) {
@@ -162,16 +162,43 @@
   padding: 20px;
 }
 
-.nav-logout{
+.nav-logout {
   padding-right: 40px;
 }
-.navbar-brand{
+.navbar-brand {
   padding-left: 40px;
 }
-.input-group-text{
+.input-group-text {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   padding-right: 20px;
+}
+
+.file-upload {
+  position: relative;
+}
+
+.file-upload-box {
+  height: 140px;
+  border-radius: 6px;
+  border: 1px dashed #adb5bd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload-input {
+  opacity: 0;
+  position: absolute;
+}
+
+.file-upload:hover .file-upload-box {
+  border-color: #495057;
+  cursor: pointer;
+}
+
+.file-upload-img {
+  height: 100%;
 }

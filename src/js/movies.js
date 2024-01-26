@@ -98,8 +98,6 @@ function filterMovies() {
 getMovies();
 
 
-"Botão de sair - Logout"
-
 document.getElementById('logout').addEventListener('click', async function() {
   await logoutUser();
 });
@@ -114,7 +112,7 @@ async function logoutUser() {
       } else {
           console.log('Usuário desconectado com sucesso.');
           // Redirecionei o usuário para tela de login
-          window.location.href = 'pages/index.html';
+          window.location.href = 'index.html';
       }
   } catch (error) {
       console.error('Erro inesperado ao fazer logout:', error);

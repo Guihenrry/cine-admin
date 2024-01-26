@@ -7,12 +7,11 @@ export default {
     rollupOptions: {
       input: {
         login: path.resolve(__dirname, 'src', 'index.html'),
-        movies: path.resolve(__dirname, 'src', 'movies.html'),
-        manager: path.resolve(__dirname, 'src', 'manager.html')
+        movies: path.resolve(__dirname, 'src', 'login.html'),
       },
     },
   },
   server: {
-    port: 8080
-  }
+    port: 8080,
+  },
 }

@@ -7,7 +7,7 @@ export default {
     rollupOptions: {
       input: {
         login: path.resolve(__dirname, 'src', 'index.html'),
-        movies: path.resolve(__dirname, 'src', 'movies.html'),
+        movies: path.resolve(__dirname, 'src', 'login.html'),
       },
     },
   },

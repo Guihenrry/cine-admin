@@ -1,39 +1,33 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
-)
+import Toast from 'bootstrap/js/dist/toast'
+import supabase from './services/supabase'
 
 const formLogin = document.getElementById('formLogin')
-const inputEmail = document.getElementById('email')
-const inputPassword = document.getElementById('password')
-const errorMessage = document.getElementById('errorMessage')
+const buttonSubmit = document.getElementById('buttonSubmit')
+const toastErrorLogin = document.getElementById('toastErrorLogin')
+const toast = Toast.getOrCreateInstance(toastErrorLogin)
 
-function resetError() {
-  inputEmail.classList.remove('is-invalid')
-  inputPassword.classList.remove('is-invalid')
-  errorMessage.classList.add('d-none')
+function setLoadingState(isLoading) {
+  buttonSubmit.disabled = isLoading
+  buttonSubmit.innerText = isLoading ? 'Carregando...' : 'Entrar'
 }
 
-inputEmail.addEventListener('focus', resetError)
-inputPassword.addEventListener('focus', resetError)
-
-formLogin.addEventListener('submit', async (event) => {
+async function handleFormSubmit(event) {
   event.preventDefault()
-  const email = inputEmail.value
-  const password = inputPassword.value
+  if (!event.target.checkValidity()) return
 
-  const response = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  })
+  const email = event.target.elements['email']?.value
+  const password = event.target.elements['password']?.value
 
-  if (response.error) {
-    inputEmail.classList.add('is-invalid')
-    inputPassword.classList.add('is-invalid')
-    errorMessage.classList.remove('d-none')
+  setLoadingState(true)
+  const { error } = await supabase.auth.signInWithPassword({ email, password })
+  setLoadingState(false)
+
+  if (error) {
+    console.error(error)
+    toast.show()
   } else {
-    window.location.href = 'movies.html'
+    window.location.href = 'index.html'
   }
-})
+}
+
+formLogin.addEventListener('submit', handleFormSubmit)

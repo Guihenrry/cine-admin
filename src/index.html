@@ -1,44 +1,148 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap w/ Vite</title>
-    <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/login.js"></script>
-  </head>
-  <body>
-    <div class="container login-container">
-      <img
-        class="logo-img"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/223a18387b3e9edcff59a97e4230f4697ca88e22f4adf86745a26f5ac3b68cb8?"
-        alt="Logo"
-      />
-      <div class="app-title">CineAdmin</div>
-      <form id="formLogin">
-        <p id="errorMessage" class="text-danger d-none">
-          As informações de login estão invalidas
-        </p>
-        <div class="form-group">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary login-btn">Login</button>
-      </form>
+<!doctype html>
+<html lang="pt-BR" class="h-100" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CineAdmin</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="scss/styles.scss">
+  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/movies.js"></script>
+</head>
+
+<body class="bg-body-tertiary">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">
+        <svg width="123" height="26" viewBox="0 0 123 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 12.9268V9.58849C20 7.53395 18.3283 5.86246 16.2734 5.86246H12.699L16.9095 1.65195C17.256 1.3055 17.256 0.743805 16.9095 0.397367C16.5631 0.0509282 16.0014 0.050921 15.6549 0.397366L10.3239 5.72845C10.1453 5.90697 9.85475 5.90702 9.67621 5.72845L4.3451 0.397345C3.99866 0.050907 3.43698 0.0509 3.09054 0.397331C2.74408 0.74377 2.74404 1.30551 3.09049 1.65195L7.30096 5.86246H3.726C1.67148 5.86246 0 7.53395 0 9.58849V22.1364C0 24.191 1.67148 25.8625 3.726 25.8625H16.2734C18.3283 25.8625 20 24.191 20 22.1364V18.7986C20 18.0871 19.6172 17.4241 19.001 17.0682L16.9128 15.8626L19.0008 14.6573C19.6171 14.3015 20 13.6384 20 12.9268ZM18.2257 12.9268C18.2257 13.0065 18.1828 13.0808 18.1138 13.1206L15.1385 14.8381L8.20538 10.8354C7.5302 10.4455 6.72408 10.4454 6.04895 10.8351C5.37377 11.2249 4.97068 11.923 4.97068 12.7026V19.0223C4.97068 19.8017 5.37367 20.4998 6.04864 20.8897C6.72366 21.2795 7.52976 21.2798 8.2053 20.8901L15.1385 16.8869L18.1138 18.6048C18.1828 18.6446 18.2257 18.7189 18.2257 18.7986V22.1364C18.2257 23.2127 17.3499 24.0882 16.2734 24.0882H3.726C2.64983 24.0882 1.77429 23.2127 1.77429 22.1364V9.58849C1.77429 8.51229 2.64983 7.63676 3.726 7.63676H16.2734C17.3499 7.63676 18.2257 8.51229 18.2257 9.58849V12.9268ZM13.3642 15.8625L7.31842 19.3534C7.00018 19.4813 6.79314 19.3619 6.74497 19.0223V12.7026C6.773 12.3597 7.05435 12.2426 7.31813 12.372L13.3642 15.8625Z"
+            fill="var(--bs-primary)" />
+          <path
+            d="M34.704 19.224C33.8187 19.224 32.9973 19.0853 32.24 18.808C31.4933 18.52 30.8427 18.1147 30.288 17.592C29.744 17.0693 29.3173 16.456 29.008 15.752C28.6987 15.0373 28.544 14.2533 28.544 13.4C28.544 12.5467 28.6987 11.768 29.008 11.064C29.3173 10.3493 29.744 9.73067 30.288 9.208C30.8427 8.68533 31.4933 8.28533 32.24 8.008C32.9973 7.72 33.8187 7.576 34.704 7.576C35.7387 7.576 36.6613 7.75733 37.472 8.12C38.2933 8.48267 38.976 9.00533 39.52 9.688L37.504 11.512C37.1413 11.0853 36.7413 10.76 36.304 10.536C35.8773 10.312 35.3973 10.2 34.864 10.2C34.4053 10.2 33.984 10.2747 33.6 10.424C33.216 10.5733 32.8853 10.792 32.608 11.08C32.3413 11.3573 32.128 11.6933 31.968 12.088C31.8187 12.4827 31.744 12.92 31.744 13.4C31.744 13.88 31.8187 14.3173 31.968 14.712C32.128 15.1067 32.3413 15.448 32.608 15.736C32.8853 16.0133 33.216 16.2267 33.6 16.376C33.984 16.5253 34.4053 16.6 34.864 16.6C35.3973 16.6 35.8773 16.488 36.304 16.264C36.7413 16.04 37.1413 15.7147 37.504 15.288L39.52 17.112C38.976 17.784 38.2933 18.3067 37.472 18.68C36.6613 19.0427 35.7387 19.224 34.704 19.224ZM40.7885 19V10.328H43.8285V19H40.7885ZM42.3085 9.368C41.7538 9.368 41.3058 9.21333 40.9645 8.904C40.6232 8.59467 40.4525 8.21067 40.4525 7.752C40.4525 7.29333 40.6232 6.90933 40.9645 6.6C41.3058 6.29067 41.7538 6.136 42.3085 6.136C42.8632 6.136 43.3112 6.28533 43.6525 6.584C43.9938 6.872 44.1645 7.24533 44.1645 7.704C44.1645 8.184 43.9938 8.584 43.6525 8.904C43.3218 9.21333 42.8738 9.368 42.3085 9.368ZM51.4521 10.184C52.1241 10.184 52.7321 10.3227 53.2761 10.6C53.8201 10.8667 54.2468 11.2827 54.5561 11.848C54.8761 12.4133 55.0361 13.144 55.0361 14.04V19H51.9961V14.536C51.9961 13.9173 51.8681 13.4693 51.6121 13.192C51.3668 12.904 51.0201 12.76 50.5721 12.76C50.2521 12.76 49.9588 12.8347 49.6921 12.984C49.4255 13.1227 49.2175 13.3413 49.0681 13.64C48.9188 13.9387 48.8441 14.328 48.8441 14.808V19H45.8041V10.328H48.7001V12.792L48.1401 12.072C48.4708 11.4427 48.9241 10.9733 49.5001 10.664C50.0761 10.344 50.7268 10.184 51.4521 10.184ZM61.5981 19.144C60.5741 19.144 59.6781 18.952 58.9101 18.568C58.1528 18.1733 57.5608 17.64 57.1341 16.968C56.7181 16.2853 56.5101 15.512 56.5101 14.648C56.5101 13.784 56.7128 13.016 57.1181 12.344C57.5341 11.6613 58.1048 11.1333 58.8301 10.76C59.5555 10.376 60.3715 10.184 61.2781 10.184C62.1315 10.184 62.9101 10.36 63.6141 10.712C64.3181 11.0533 64.8781 11.56 65.2941 12.232C65.7101 12.904 65.9181 13.72 65.9181 14.68C65.9181 14.7867 65.9128 14.9093 65.9021 15.048C65.8915 15.1867 65.8808 15.3147 65.8701 15.432H59.0061V13.832H64.2541L63.1021 14.28C63.1128 13.8853 63.0381 13.544 62.8781 13.256C62.7288 12.968 62.5155 12.744 62.2381 12.584C61.9715 12.424 61.6568 12.344 61.2941 12.344C60.9315 12.344 60.6115 12.424 60.3341 12.584C60.0675 12.744 59.8595 12.9733 59.7101 13.272C59.5608 13.56 59.4861 13.9013 59.4861 14.296V14.76C59.4861 15.1867 59.5715 15.5547 59.7421 15.864C59.9235 16.1733 60.1795 16.4133 60.5101 16.584C60.8408 16.744 61.2355 16.824 61.6941 16.824C62.1208 16.824 62.4835 16.7653 62.7821 16.648C63.0915 16.52 63.3955 16.328 63.6941 16.072L65.2941 17.736C64.8781 18.1947 64.3661 18.5467 63.7581 18.792C63.1501 19.0267 62.4301 19.144 61.5981 19.144ZM66.1197 19L71.0638 7.8H74.1838L79.1438 19H75.8478L71.9758 9.352H73.2238L69.3518 19H66.1197ZM68.8238 16.824L69.6398 14.488H75.1118L75.9278 16.824H68.8238ZM83.5958 19.144C82.8064 19.144 82.0864 18.9627 81.4358 18.6C80.7958 18.2267 80.2838 17.7093 79.8997 17.048C79.5158 16.376 79.3238 15.576 79.3238 14.648C79.3238 13.7307 79.5158 12.9413 79.8997 12.28C80.2838 11.608 80.7958 11.0907 81.4358 10.728C82.0864 10.3653 82.8064 10.184 83.5958 10.184C84.3424 10.184 84.9718 10.344 85.4838 10.664C86.0064 10.984 86.4011 11.4747 86.6678 12.136C86.9344 12.7973 87.0677 13.6347 87.0677 14.648C87.0677 15.6827 86.9398 16.5307 86.6838 17.192C86.4278 17.8533 86.0438 18.344 85.5318 18.664C85.0198 18.984 84.3744 19.144 83.5958 19.144ZM84.2358 16.728C84.5771 16.728 84.8811 16.648 85.1478 16.488C85.4251 16.328 85.6438 16.0933 85.8038 15.784C85.9638 15.464 86.0438 15.0853 86.0438 14.648C86.0438 14.2107 85.9638 13.8427 85.8038 13.544C85.6438 13.2347 85.4251 13 85.1478 12.84C84.8811 12.68 84.5771 12.6 84.2358 12.6C83.8838 12.6 83.5691 12.68 83.2918 12.84C83.0251 13 82.8118 13.2347 82.6518 13.544C82.4918 13.8427 82.4118 14.2107 82.4118 14.648C82.4118 15.0853 82.4918 15.464 82.6518 15.784C82.8118 16.0933 83.0251 16.328 83.2918 16.488C83.5691 16.648 83.8838 16.728 84.2358 16.728ZM86.1398 19V17.512L86.1558 14.648L85.9958 11.784V7.128H89.0358V19H86.1398ZM102.288 10.184C102.96 10.184 103.557 10.3227 104.08 10.6C104.613 10.8667 105.029 11.2827 105.328 11.848C105.637 12.4133 105.792 13.144 105.792 14.04V19H102.752V14.536C102.752 13.9173 102.634 13.4693 102.4 13.192C102.165 12.904 101.845 12.76 101.44 12.76C101.152 12.76 100.89 12.8293 100.656 12.968C100.421 13.1067 100.24 13.32 100.112 13.608C99.9836 13.8853 99.9196 14.248 99.9196 14.696V19H96.8796V14.536C96.8796 13.9173 96.7623 13.4693 96.5276 13.192C96.3036 12.904 95.9836 12.76 95.5676 12.76C95.269 12.76 95.0023 12.8293 94.7676 12.968C94.5436 13.1067 94.3623 13.32 94.2236 13.608C94.0956 13.8853 94.0316 14.248 94.0316 14.696V19H90.9916V10.328H93.8876V12.744L93.3116 12.056C93.6316 11.4373 94.069 10.9733 94.6236 10.664C95.1783 10.344 95.797 10.184 96.4796 10.184C97.2583 10.184 97.941 10.3867 98.5276 10.792C99.125 11.1867 99.525 11.8053 99.7276 12.648L98.7356 12.44C99.045 11.736 99.509 11.1867 100.128 10.792C100.757 10.3867 101.477 10.184 102.288 10.184ZM107.71 19V10.328H110.75V19H107.71ZM109.23 9.368C108.676 9.368 108.228 9.21333 107.886 8.904C107.545 8.59467 107.374 8.21067 107.374 7.752C107.374 7.29333 107.545 6.90933 107.886 6.6C108.228 6.29067 108.676 6.136 109.23 6.136C109.785 6.136 110.233 6.28533 110.574 6.584C110.916 6.872 111.086 7.24533 111.086 7.704C111.086 8.184 110.916 8.584 110.574 8.904C110.244 9.21333 109.796 9.368 109.23 9.368ZM118.374 10.184C119.046 10.184 119.654 10.3227 120.198 10.6C120.742 10.8667 121.169 11.2827 121.478 11.848C121.798 12.4133 121.958 13.144 121.958 14.04V19H118.918V14.536C118.918 13.9173 118.79 13.4693 118.534 13.192C118.289 12.904 117.942 12.76 117.494 12.76C117.174 12.76 116.881 12.8347 116.614 12.984C116.347 13.1227 116.139 13.3413 115.99 13.64C115.841 13.9387 115.766 14.328 115.766 14.808V19H112.726V10.328H115.622V12.792L115.062 12.072C115.393 11.4427 115.846 10.9733 116.422 10.664C116.998 10.344 117.649 10.184 118.374 10.184Z"
+            fill="var(--bs-primary)" />
+        </svg>
+      </a>
+      <button id="buttonLogout" class="btn btn-link text-decoration-none">Sair</button>
     </div>
-  </body>
+  </nav>
+
+  <main class="container">
+    <h1 class="pt-4">Filmes</h1>
+    <p class="pb-4">Listagem com todos os filmes cadastrados</p>
+
+    <div class="shadow-sm bg-light-subtle rounded">
+      <div class="p-4 d-flex flex-column flex-md-row justify-content-between gap-3">
+        <div class="input-group md-max-w-340">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input class="form-control" id="searchInput" type="text" placeholder="Buscar">
+        </div>
+
+        <button class="btn btn-primary" id="buttonAddMovie" type="button" data-bs-toggle="modal"
+          data-bs-target="#modalAddMovie">Adicionar Filme</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal">Cover</th>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal">Título</th>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal">Descrição</th>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal">Gêneros</th>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal">Ano</th>
+              <th class="bg-body-tertiary border-top text-secondary fw-normal" style="width: 58px;"></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td class="text-center py-5" colspan="6">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal add movie -->
+  <div class="modal fade" id="modalAddMovie" tabindex="-1" aria-labelledby="modalAddMovieLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAddMovieLabel">Adicionar filme</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Em desenvolvimento
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal edit movie -->
+  <div class="modal fade" id="modalEditMovie" tabindex="-1" aria-labelledby="modalEditMovieLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalEditMovieLabel">Editar filme</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Em desenvolvimento
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal delete movie -->
+  <div class="modal fade" id="modalDeleteMovie" tabindex="-1" aria-labelledby="modalDeleteMovieLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalDeleteMovieLabel">Deletar filme</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Ao excluir este filme, todas as informações relacionadas serão perdidas. Você tem certeza de que deseja
+          deletar?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger" id="modalDeleteMovieConfirm" type="button" data-bs-dismiss="modal">Sim,
+            Deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="dropdown position-fixed bottom-0 end-0 m-3">
+    <button id="bd-theme" class="dropdown-toggle btn btn-primary" type="button" data-bs-toggle="dropdown"
+      aria-expanded="false" aria-label="Alterar tema">
+      <i class="bi bi-sun-fill"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><button class="dropdown-item" data-bs-theme-value="dark"><i class="bi bi-sun-fill"></i> Dark</button></li>
+      <li><button class="dropdown-item" data-bs-theme-value="light"><i class="bi bi-moon-stars-fill"></i> Light</button>
+      </li>
+      <li><button class="dropdown-item" data-bs-theme-value="auto"><i class="bi bi-circle-half"></i> Auto</button></li>
+    </ul>
+  </div>
+</body>
+
 </html>

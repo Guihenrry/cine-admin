@@ -4,7 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>CineAdmin</title>
+  <meta name="description" content="CineAdmin uma plataforma para gerenciar filmes de forma prática e intuitiva.">
+  <meta name="theme-color" content="#7749F8">
+  <meta property="og:title" content="CineAdmin">
+  <meta property="og:description"
+    content="CineAdmin uma plataforma para gerenciar filmes de forma prática e intuitiva.">
+  <meta property="og:image" content="/ogimage.jpg">
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="scss/styles.scss">
@@ -78,13 +86,34 @@
           <h1 class="modal-title fs-5" id="modalAddMovieLabel">Adicionar filme</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          Em desenvolvimento
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Adicionar</button>
-        </div>
+        <form id="formAddMovie">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="addCover" class="form-label">Cover</label>
+              <input class="form-control" type="file" id="addCover" name="cover" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+              <label for="addTitle" class="form-label">Titulo</label>
+              <input type="text" class="form-control" id="addTitle" name="title" required>
+            </div>
+            <div class="mb-3">
+              <label for="addYear" class="form-label">Ano</label>
+              <input type="text" class="form-control" id="addYear" name="year" required>
+            </div>
+            <div class="mb-3">
+              <label for="addGender" class="form-label">Gêneros</label>
+              <input type="text" class="form-control" id="addGender" name="gender" required>
+            </div>
+            <div class="mb-3">
+              <label for="addDescription" class="form-label">Descrição</label>
+              <textarea class="form-control" id="addDescription" rows="3" name="description" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -97,13 +126,34 @@
           <h1 class="modal-title fs-5" id="modalEditMovieLabel">Editar filme</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          Em desenvolvimento
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
-        </div>
+        <form id="formEditMovie">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="editCover" class="form-label">Cover</label>
+              <input class="form-control" type="file" id="editCover" name="cover" accept="image/*">
+            </div>
+            <div class="mb-3">
+              <label for="editTitle" class="form-label">Titulo</label>
+              <input type="text" class="form-control" id="editTitle" name="title" required>
+            </div>
+            <div class="mb-3">
+              <label for="editYear" class="form-label">Ano</label>
+              <input type="text" class="form-control" id="editYear" name="year" required>
+            </div>
+            <div class="mb-3">
+              <label for="editGender" class="form-label">Gêneros</label>
+              <input type="text" class="form-control" id="editGender" name="gender" required>
+            </div>
+            <div class="mb-3">
+              <label for="editDescription" class="form-label">Descrição</label>
+              <textarea class="form-control" id="editDescription" rows="3" name="description" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

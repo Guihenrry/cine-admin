@@ -8,7 +8,6 @@ export default {
       input: {
         login: path.resolve(__dirname, 'src', 'index.html'),
         movies: path.resolve(__dirname, 'src', 'movies.html'),
-        manager: path.resolve(__dirname, 'src', 'manager.html'),
       },
     },
   },

@@ -96,3 +96,28 @@ function filterMovies() {
 }
 
 getMovies();
+
+
+"Botão de sair - Logout"
+
+document.getElementById('logout').addEventListener('click', async function() {
+  await logoutUser();
+});
+
+// Função de fazer logout do usuário
+async function logoutUser() {
+  try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+          console.error('Erro ao fazer logout:', error.message);
+          alert('Erro ao fazer logout. Por favor, tente novamente.');
+      } else {
+          console.log('Usuário desconectado com sucesso.');
+          // Redirecionei o usuário para tela de login
+          window.location.href = 'http://localhost:8080/login';
+      }
+  } catch (error) {
+      console.error('Erro inesperado ao fazer logout:', error);
+      alert('Ocorreu um erro inesperado ao fazer logout. Por favor, tente novamente mais tarde.');
+  }
+}

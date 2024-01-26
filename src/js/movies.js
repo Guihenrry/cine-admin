@@ -114,7 +114,7 @@ async function logoutUser() {
       } else {
           console.log('Usuário desconectado com sucesso.');
           // Redirecionei o usuário para tela de login
-          window.location.href = 'http://localhost:8080/login';
+          window.location.href = 'pages/index.html';
       }
   } catch (error) {
       console.error('Erro inesperado ao fazer logout:', error);

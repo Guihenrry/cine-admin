@@ -39,7 +39,7 @@ O CineAdmin é um sistema de gerenciamento de filmes com funcionalidades essenci
 
 ### Video do funcionamento da aplicação
 
-...
+https://www.loom.com/share/c18b8538e4354e6f84a7d94aa97e8444?sid=068dbbd1-74f7-4ff4-b964-17196c646214
 
 ## Como utilizar
 
